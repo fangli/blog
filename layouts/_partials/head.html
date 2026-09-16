@@ -8,7 +8,11 @@
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ site.Params.author }}">
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ site.Params.avatar | relURL }}" type="image/jpeg">
+{{/* Embed the portrait so the circular SVG favicon is a self-contained image. */}}
+{{ $avatar := resources.FromString "favicon-avatar.jpg" (os.ReadFile (printf "static/%s" (strings.TrimPrefix "/" site.Params.avatar))) }}
+{{ $avatar = $avatar.Fill "64x64 jpg q85" }}
+{{ $favicon := resources.FromString "favicon.svg" (printf `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="circle"><circle cx="32" cy="32" r="32"/></clipPath></defs><image width="64" height="64" clip-path="url(#circle)" href="data:image/jpeg;base64,%s"/></svg>` ($avatar.Content | base64Encode)) | fingerprint }}
+<link rel="icon" href="{{ $favicon.RelPermalink }}" type="image/svg+xml">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">

@@ -3,8 +3,12 @@ const themes = ['system', 'light', 'dark'];
 function updateThemeButton() {
   const current = document.documentElement.dataset.theme || 'system';
   const next = themes[(themes.indexOf(current) + 1) % themes.length];
-  toggle.textContent = `Theme: ${current[0].toUpperCase()}${current.slice(1)}`;
-  toggle.setAttribute('aria-label', `Color theme: ${current}. Change to ${next}.`);
+  const label = `Color theme: ${current}. Change to ${next}.`;
+  toggle.querySelectorAll('[data-theme-icon]').forEach(icon => {
+    icon.toggleAttribute('hidden', icon.dataset.themeIcon !== current);
+  });
+  toggle.setAttribute('aria-label', label);
+  toggle.title = label;
 }
 if (toggle) {
   toggle.hidden = false;

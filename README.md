@@ -106,7 +106,7 @@ The four included posts are explicitly marked as examples. They show Chinese/Eng
 - Only the homepage has the approximately one-third profile / two-thirds post layout.
 - Category and article pages use the full main content area.
 - Mobile layouts stack, with all category links visible.
-- Light/dark mode follows the operating system by default. The footer's **Theme** button cycles System → Light → Dark and remembers the selection.
+- Light/dark mode follows the operating system by default. The footer's theme icon cycles System (monitor) → Light (sun) → Dark (moon) and remembers the selection.
 - Each list paginates after ten posts. Change `pagination.pagerSize` in `hugo.toml`.
 - RSS: `/index.xml` for all posts, `/life/index.xml` and equivalents for categories.
 - Canonical URLs, social metadata, sitemap, robots.txt, and a custom 404 are generated automatically.
