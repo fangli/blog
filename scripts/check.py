@@ -52,6 +52,10 @@ with TemporaryDirectory(prefix='fangli-check-') as tmp:
     # A copied content tree keeps generated test posts out of the real site.
     content = work / 'content'
     shutil.copytree(ROOT / 'content', content)
+    subprocess.run(['hugo', 'new', 'content', '--contentDir', str(content),
+                    'posts/archetype-check/index.md'], cwd=ROOT, check=True)
+    created = (content / 'posts/archetype-check/index.md').read_text()
+    assert "categories: ['Life']" in created and 'draft: true' in created
     for i in range(12):
         (content / 'posts' / f'pagination-check-{i}.md').write_text(
             f'---\ntitle: Pagination check {i}\ndate: 2025-01-01\ncategories: [Life]\n---\nTest.\n')

@@ -124,7 +124,7 @@ python3 scripts/check.py    # Verify routes, pagination, drafts, and feeds
 | `hugo.toml` | Site identity, category URLs, pagination, Markdown settings |
 | `content/posts/` | Markdown page bundles and their media |
 | `content/categories/` | Category descriptions and menu entries |
-| `archetypes/posts/` | Template for a new post |
+| `archetypes/posts.md` | Template for a new post |
 | `layouts/` | Home, list, category, article, and 404 templates |
 | `layouts/_partials/` | Shared header, footer, metadata, and post list |
 | `layouts/_markup/` | Markdown image rendering |
@@ -134,7 +134,7 @@ python3 scripts/check.py    # Verify routes, pagination, drafts, and feeds
 | `static/` | Avatar and Cloudflare response headers |
 | `wrangler.jsonc` | Cloudflare static hosting and domain configuration |
 
-Syntax colors in `assets/css/syntax.css` are generated from Hugo's `github` and `github-dark` Chroma styles. Layout and appearance are otherwise plain CSS. There is no Node dependency installation required to build the blog.
+Syntax colors in `assets/css/syntax.css` are generated from Hugo's `github` and `github-dark` Chroma styles. Regenerate them with `python3 scripts/syntax.py`. Layout and appearance are otherwise plain CSS. There is no Node dependency installation required to build the blog.
 
 ## Deployment
 

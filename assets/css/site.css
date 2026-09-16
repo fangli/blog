@@ -108,7 +108,6 @@ pre code { font-size: inherit; }
 .theme-toggle:hover { color: var(--ink); }
 .skip-link { position: absolute; left: 1rem; top: 1rem; background: var(--paper); padding: .5rem 1rem; transform: translateY(-200%); z-index: 1; }
 .skip-link:focus { transform: none; }
-@media (min-width: 800px) { .home-layout + * { margin-top: 4rem; } }
 @media (max-width: 760px) {
   .site-shell { width: min(100% - 3rem, var(--site-width)); }
   .site-header { padding-block: 1rem 2.75rem; }
