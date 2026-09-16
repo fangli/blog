@@ -111,7 +111,7 @@ pre code { font-size: inherit; }
 @media (max-width: 760px) {
   .site-shell { width: min(100% - 3rem, var(--site-width)); }
   .site-header { padding-block: 1rem 2.75rem; }
-  .main-nav { justify-content: center; gap: .25rem 1.25rem; }
+  .main-nav { justify-content: center; gap: .25rem 1rem; }
   .main-nav a { font-size: .875rem; }
   .home-layout { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .profile { padding-top: 0; }
