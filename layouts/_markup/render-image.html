@@ -1,0 +1,12 @@
+{{- $src := .Destination -}}
+{{- $image := .Page.Resources.GetMatch .Destination -}}
+{{- $width := 0 -}}{{- $height := 0 -}}
+{{- if $image -}}
+  {{- $src = $image.RelPermalink -}}
+  {{- if ne $image.MediaType.SubType "svg" -}}
+    {{- if gt $image.Width 1600 -}}{{- $image = $image.Resize "1600x webp" -}}{{- end -}}
+    {{- $src = $image.RelPermalink -}}
+    {{- $width = $image.Width -}}{{- $height = $image.Height -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $width }} width="{{ $width }}" height="{{ $height }}"{{ end }} loading="lazy" decoding="async">

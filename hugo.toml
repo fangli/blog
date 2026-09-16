@@ -1,0 +1,48 @@
+baseURL = 'https://fang.li/'
+title = 'Fang Li'
+locale = 'en-US'
+defaultContentLanguage = 'en'
+hasCJKLanguage = true
+enableRobotsTXT = true
+timeZone = 'America/Los_Angeles'
+summaryLength = 35
+
+[module]
+  [module.hugoVersion]
+    min = '0.166.0'
+
+[taxonomies]
+  category = 'categories'
+
+[permalinks.term]
+  categories = '/:slug/'
+
+[permalinks.page]
+  posts = '/posts/:slugorcontentbasename/'
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = 'Fang Li — software engineer, father of two, based in San Francisco. Notes on life, software, projects, and AI.'
+  author = 'Fang Li'
+  avatar = '/avatar.jpg'
+  bio = 'Father of two · Software engineer'
+  location = 'San Francisco, CA'
+  github = 'https://github.com/fangli'
+  linkedin = 'https://www.linkedin.com/in/lifang1991/'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+  taxonomy = ['HTML', 'RSS']
+  term = ['HTML', 'RSS']

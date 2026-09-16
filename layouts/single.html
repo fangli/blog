@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="post-full">
+  <header class="page-heading">
+    {{ partial "post-meta.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="post-deck">{{ . }}</p>{{ end }}
+  </header>
+  {{ if .Params.example }}<p class="example-note">Example post — a reference for writing and formatting. Edit or remove it whenever you're ready.</p>{{ end }}
+  {{ if .Params.toc }}<details class="toc"><summary>On this page</summary>{{ .TableOfContents }}</details>{{ end }}
+  <div class="prose">{{ .Content }}</div>
+  <nav class="post-end" aria-label="Back to posts">
+    {{ with .GetTerms "categories" }}{{ range first 1 . }}<a href="{{ .RelPermalink }}">← More in {{ .LinkTitle }}</a>{{ end }}{{ else }}<a href="{{ "/" | relURL }}">← All posts</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

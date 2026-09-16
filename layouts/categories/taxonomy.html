@@ -1,0 +1,8 @@
+{{ define "main" }}
+<section class="archive">
+  <header class="page-heading"><h1>Categories</h1></header>
+  {{ range .Pages.ByWeight }}
+  <article class="post-preview"><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ .Description }}</p></article>
+  {{ end }}
+</section>
+{{ end }}

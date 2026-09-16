@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="home-layout">
+  {{ partial "profile.html" . }}
+  <section class="home-posts" aria-labelledby="latest-writing">
+    <h2 class="section-label" id="latest-writing">Latest writing</h2>
+    {{ partial "post-list.html" (.Paginate (where site.RegularPages "Section" "posts").ByDate.Reverse) }}
+  </section>
+</div>
+{{ end }}

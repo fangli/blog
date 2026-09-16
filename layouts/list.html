@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="archive">
+  <header class="page-heading">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  </header>
+  {{ partial "post-list.html" (.Paginate .RegularPages.ByDate.Reverse) }}
+</section>
+{{ end }}

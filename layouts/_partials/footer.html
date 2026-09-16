@@ -1,0 +1,7 @@
+<footer class="site-footer">
+  <span>© {{ now.Year }} {{ site.Title }}</span>
+  <div class="footer-links">
+    {{ with .OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ else }}<a href="{{ "index.xml" | relURL }}">RSS</a>{{ end }}
+    <button class="theme-toggle" type="button" hidden aria-label="Color theme: system. Change to light.">Theme: System</button>
+  </div>
+</footer>

@@ -1,0 +1,18 @@
+<div class="post-list">
+  {{ range .Pages }}
+    <article class="post-preview" lang="{{ .Params.contentLanguage | default "en" }}">
+      {{ partial "post-meta.html" . }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p>{{ .Description | default (.Summary | plainify) }}</p>
+    </article>
+  {{ else }}
+    <p class="muted">Nothing here yet. New writing will appear here.</p>
+  {{ end }}
+</div>
+{{ if gt .TotalPages 1 }}
+<nav class="pagination" aria-label="Pagination">
+  {{ with .Prev }}<a href="{{ .URL }}">← Newer posts</a>{{ end }}
+  <span>Page {{ .PageNumber }} of {{ .TotalPages }}</span>
+  {{ with .Next }}<a href="{{ .URL }}">Older posts →</a>{{ end }}
+</nav>
+{{ end }}

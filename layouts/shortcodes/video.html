@@ -1,0 +1,13 @@
+{{- $src := .Get "src" -}}
+{{- if not $src -}}{{- errorf "video shortcode requires src: %s" .Position -}}{{- end -}}
+{{- with .Page.Resources.GetMatch $src -}}{{- $src = .RelPermalink -}}{{- end -}}
+{{- $poster := .Get "poster" -}}
+{{- with .Page.Resources.GetMatch $poster -}}{{- $poster = .RelPermalink -}}{{- end -}}
+<figure>
+  <video class="video-file" controls playsinline preload="metadata"{{ with $poster }} poster="{{ . | safeURL }}"{{ end }} aria-label="{{ .Get "title" | default "Video" }}">
+    <source src="{{ $src | safeURL }}"{{ with .Get "type" }} type="{{ . }}"{{ end }}>
+    {{ with .Get "captions" }}<track kind="captions" src="{{ . | safeURL }}" srclang="{{ $.Get "lang" | default "en" }}" label="Captions" default>{{ end }}
+    <a href="{{ $src | safeURL }}">Download the video</a>.
+  </video>
+  {{ with .Get "title" }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>
