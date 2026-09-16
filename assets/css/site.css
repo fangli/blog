@@ -26,7 +26,7 @@
   }
 }
 * { box-sizing: border-box; }
-html { background: var(--paper); color: var(--ink); scroll-behavior: smooth; }
+html { background: var(--paper); color: var(--ink); scroll-behavior: smooth; scroll-padding-top: 7rem; }
 body { margin: 0; font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em; }
 a:hover { text-decoration: underline; }
@@ -36,7 +36,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 [hidden] { display: none !important; }
 ::selection { background: var(--ink); color: var(--paper); }
 .site-shell { width: min(100% - 4rem, var(--site-width)); margin-inline: auto; }
-.site-header { display: flex; align-items: center; gap: 1rem; padding-block: 2rem 4.5rem; }
+.site-header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 1rem; padding-block: 2rem 1rem; margin-bottom: 3.5rem; background: var(--paper); }
 .header-avatar { display: none; }
 .site-header .main-nav { margin-left: auto; }
 .main-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .25rem 1.75rem; }
@@ -112,11 +112,12 @@ pre code { font-size: inherit; }
 .theme-toggle:hover { color: var(--ink); background: var(--soft); }
 .theme-toggle:active { background: var(--soft); }
 .theme-icon { width: 14px; height: 14px; }
-.skip-link { position: absolute; left: 1rem; top: 1rem; background: var(--paper); padding: .5rem 1rem; transform: translateY(-200%); z-index: 1; }
+.skip-link { position: absolute; left: 1rem; top: 1rem; background: var(--paper); padding: .5rem 1rem; transform: translateY(-200%); z-index: 20; }
 .skip-link:focus { transform: none; }
 @media (max-width: 760px) {
+  html { scroll-padding-top: 5.5rem; }
   .site-shell { width: min(100% - 3rem, var(--site-width)); }
-  .site-header { padding-block: 1rem 2.75rem; }
+  .site-header { padding-block: 1rem .75rem; margin-bottom: 2rem; }
   .header-avatar { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; height: 44px; border-radius: 50%; }
   .header-avatar img { display: block; border-radius: 50%; object-fit: cover; }
   .main-nav { justify-content: flex-end; gap: .25rem clamp(.5rem, 2.5vw, 1rem); }
