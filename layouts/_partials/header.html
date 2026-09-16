@@ -1,7 +1,9 @@
 <header class="site-header">
+  {{ if not .IsHome }}
   <a class="header-avatar" href="{{ "/" | relURL }}" aria-label="Fang Li — home">
     <img src="{{ site.Params.avatar | relURL }}" width="32" height="32" alt="">
   </a>
+  {{ end }}
   <nav class="main-nav" aria-label="Main navigation">
     <a href="{{ "/" | relURL }}"{{ if .IsHome }} aria-current="page"{{ end }}>Home</a>
     {{ $current := . }}
