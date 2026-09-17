@@ -138,7 +138,7 @@ Syntax colors in `assets/css/syntax.css` are generated from Hugo's `github` and 
 
 ## Deployment
 
-Cloudflare project: **fang-li-blog**. Production repository: **fangli/fangli**, branch **main**.
+Cloudflare project: **fang-li-blog**. Production repository: **fangli/blog**, branch **main**.
 
 Build configuration:
 
@@ -150,6 +150,6 @@ Build configuration:
 
 Cloudflare's GitHub connection handles publishing. No Cloudflare API token is stored in this repository or in GitHub Actions. View deployment logs and roll back to an earlier version from the Cloudflare dashboard.
 
-If a push does not start a build, check that the **Cloudflare Workers and Pages** GitHub App has access to `fangli/fangli` in GitHub → Settings → Applications. A public repository can be cloned without that permission, but automatic builds require it.
+If a push does not start a build, check that the **Cloudflare Workers and Pages** GitHub App has access to `fangli/blog` in GitHub → Settings → Applications. A public repository can be cloned without that permission, but automatic builds require it.
 
 For a Hugo upgrade, update `.hugo-version`, `module.hugoVersion.min` in `hugo.toml`, and Cloudflare's `HUGO_VERSION` together, then verify locally. The deployment uses a fixed version so a tool release cannot unexpectedly change your blog.
