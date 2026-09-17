@@ -1,7 +1,7 @@
 ---
 title: '和 AI 协作：把判断留在自己手里'
 date: 2026-09-09T09:00:00-07:00
-categories: [AI]
+categories: [Life]
 contentLanguage: zh-CN
 description: '一个可重复使用的实验记录模板：问题、尝试、验证，以及尚未解决的部分。'
 example: true

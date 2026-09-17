@@ -14,7 +14,7 @@
       {{ range $current.GetTerms "categories" }}
         {{ if eq .RelPermalink $entry.URL }}{{ $active = true }}{{ end }}
       {{ end }}
-      <a href="{{ .URL }}"{{ if $active }} aria-current="{{ if $current.IsPage }}location{{ else }}page{{ end }}"{{ end }}>{{ .Name }}</a>
+      <a href="{{ .URL }}"{{ if $active }} aria-current="{{ if eq $current.RelPermalink .URL }}page{{ else }}location{{ end }}"{{ end }}>{{ .Name }}</a>
     {{ end }}
   </nav>
 </header>

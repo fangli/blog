@@ -1,7 +1,7 @@
 ---
 title: 'Small functions, clear boundaries'
 date: 2026-09-11T09:00:00-07:00
-categories: [Software]
+categories: [Projects]
 contentLanguage: en
 description: 'A small code example, and a reminder to make the common case easy to read.'
 example: true

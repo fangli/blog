@@ -18,7 +18,7 @@ Open the local address Hugo prints. A new post starts as a draft. Edit its Markd
 title: 'A small observation'
 date: '2026-09-15T09:00:00-07:00'
 draft: false
-categories: ['Life']
+categories: ['Your category']
 contentLanguage: en
 description: 'One or two sentences for the list and sharing previews.'
 ---
@@ -38,17 +38,15 @@ Use `contentLanguage: zh-CN` for Chinese. Posts in both languages share one feed
 
 ## Categories and navigation
 
-The initial categories are **Life**, **Software**, **Projects**, and **AI**. Give each post one primary category. Hugo supports more than one if that becomes useful, but one keeps the navigation clear.
+Categories are defined by your content, not a fixed list. Set a post's `categories` field to the names you want; Hugo supports one or more categories, or none. Changing a category does not change a post's URL.
 
-Hugo's native category taxonomy generates `/life/`, `/software/`, `/projects/`, and `/ai/`. Changing a category does not change a post's URL.
-
-To add a category, create `content/categories/travel/_index.md`:
+To give a category an introduction and a place in the navigation, create `content/categories/your-category/_index.md` with your own values:
 
 ```yaml
 ---
-title: Travel
-slug: travel
-description: Notes from elsewhere.
+title: Your category
+slug: your-category
+description: A short introduction to this category.
 weight: 50
 menus:
   main:
@@ -56,7 +54,15 @@ menus:
 ---
 ```
 
-Then use `categories: ['Travel']` in a post. That one category file controls its title, URL, introduction, and navigation position. Use unique slugs; root-level names such as `posts`, `categories`, and `page` are reserved for site pages.
+Use the same category name in the post's `categories` field. The category file controls its title, URL (`/<slug>/`), introduction, and navigation position. Lower menu weights appear first; omit `menus` to keep the category out of the navigation. Use unique slugs; root-level names such as `posts`, `categories`, and `page` are reserved for site pages.
+
+To remove a category entirely, reassign or remove it from its posts and delete its category file. Removing only the file leaves Hugo free to generate the category from posts that still reference it. You can change the defaults for new posts in `archetypes/posts.md`.
+
+## Standalone pages
+
+Create `content/your-page/index.md` for a page outside the blog feed. Set `type: page` in its front matter to use the simple title-and-content layout, without post metadata or a post list. Write the body in Markdown as usual.
+
+Add `menus.main.weight` to include it in the shared navigation. Its URL is `/your-page/`; choose a folder name that does not conflict with a category slug. Standalone pages appear in the sitemap, while the homepage and RSS feeds contain posts only.
 
 ## Images and video
 
@@ -84,7 +90,7 @@ For a local clip or externally hosted video:
 {{< video src="clip.mp4" title="A short demo" type="video/mp4" >}}
 ```
 
-The player supports optional `poster`, `captions` (a WebVTT URL), and `lang`. Use hosted video for large files: Workers static assets have a per-file limit, and large video files make the Git history heavy. The example uses an external MDN sample.
+The player supports optional `poster`, `captions` (a WebVTT URL), and `lang`. Use hosted video for large files: Workers static assets have a per-file limit, and large video files make the Git history heavy.
 
 For YouTube, use its 11-character video ID:
 
@@ -98,7 +104,7 @@ Videos have controls and never autoplay. YouTube embeds use the privacy-enhanced
 
 Use fenced code blocks with a language, such as `python`, `go`, `sh`, or `javascript`. Hugo highlights them at build time. Code blocks and tables scroll horizontally on small screens.
 
-The four included posts are explicitly marked as examples. They show Chinese/English text, links, quotes, lists, tables, code, a table of contents, images, and video. Edit them freely or delete their folders. Remove `example: true` to remove the example notice.
+The optional `example: true` front matter field displays an example notice. Omit it for regular posts.
 
 ## Layout and appearance
 
@@ -108,7 +114,7 @@ The four included posts are explicitly marked as examples. They show Chinese/Eng
 - Mobile layouts stack, with all category links visible.
 - Light/dark mode follows the operating system by default. The footer's theme icon cycles Auto (half-filled circle) → Light (sun) → Dark (moon) and remembers the selection.
 - Each list paginates after ten posts. Change `pagination.pagerSize` in `hugo.toml`.
-- RSS: `/index.xml` for all posts, `/life/index.xml` and equivalents for categories.
+- RSS: `/index.xml` for all posts, `/<category-slug>/index.xml` for each category.
 - Canonical URLs, social metadata, sitemap, robots.txt, and a custom 404 are generated automatically.
 
 ## Development and structure
@@ -116,7 +122,6 @@ The four included posts are explicitly marked as examples. They show Chinese/Eng
 ```sh
 hugo server --buildDrafts    # Live preview including drafts
 hugo --gc --minify          # Production build into public/
-python3 scripts/check.py    # Verify routes, pagination, drafts, and feeds
 ```
 
 | Location | Purpose |
