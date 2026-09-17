@@ -37,7 +37,8 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 ::selection { background: var(--ink); color: var(--paper); }
 .site-shell { width: min(100% - 4rem, var(--site-width)); margin-inline: auto; }
 .site-header { display: flex; align-items: center; gap: 1rem; padding-block: 2rem 4.5rem; }
-.header-avatar { display: none; }
+.header-avatar { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; height: 44px; border-radius: 50%; }
+.header-avatar img { display: block; border-radius: 50%; object-fit: cover; }
 .site-header .main-nav { margin-left: auto; }
 .main-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .25rem 1.75rem; }
 .main-nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--muted); text-decoration: none; font-size: .9375rem; }
@@ -117,8 +118,6 @@ pre code { font-size: inherit; }
 @media (max-width: 760px) {
   .site-shell { width: min(100% - 3rem, var(--site-width)); }
   .site-header { padding-block: 1rem 2.75rem; }
-  .header-avatar { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; height: 44px; border-radius: 50%; }
-  .header-avatar img { display: block; border-radius: 50%; object-fit: cover; }
   .main-nav { justify-content: flex-end; gap: .25rem clamp(.5rem, 2.5vw, 1rem); }
   .main-nav a { font-size: .875rem; }
   .home-layout { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
